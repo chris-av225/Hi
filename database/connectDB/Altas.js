@@ -1,24 +1,41 @@
-// database/atlas.js
 const { MongoClient } = require('mongodb');
-const config = require('../config.dev.json'); // Adapte le chemin si nécessaire
+const config = require('../config.dev.json');
 
-const uri = config.MONGODB_URI || "mongodb+srv://evaelfiieiy:motdepasse@cluster1.aygslzu.mongodb.net/?retryWrite=true&w=majority&appName=Cluster1";
+class AtlasDB {
+  constructor() {
+    this.client = null;
+    this.db = null;
+    this.uri = config.MONGODB_URI;
+  }
 
-let client;
-let db;
+  async connect() {
+    if (this.db) return this.db;
+    
+    try {
+      this.client = new MongoClient(this.uri, {
+        connectTimeoutMS: 5000,
+        socketTimeoutMS: 30000,
+        serverSelectionTimeoutMS: 5000,
+        maxPoolSize: 50
+      });
+      
+      await this.client.connect();
+      this.db = this.client.db('sicbo_bot');
+      console.log('🔌 Connecté à MongoDB Atlas');
+      return this.db;
+    } catch (err) {
+      console.error('❌ Erreur de connexion:', err.message);
+      throw err;
+    }
+  }
 
-async function connect() {
-  if (db) return db; // Connexion existante
-  try {
-    client = new MongoClient(uri);
-    await client.connect();
-    db = client.db('sicbo_bot'); // Nom de ta base
-    console.log('✅ Connecté à MongoDB Atlas');
-    return db;
-  } catch (err) {
-    console.error('❌ Erreur de connexion MongoDB:', err);
-    process.exit(1);
+  async disconnect() {
+    if (this.client) {
+      await this.client.close();
+      this.client = null;
+      this.db = null;
+    }
   }
 }
 
-module.exports = { connect };
+module.exports = new AtlasDB();
