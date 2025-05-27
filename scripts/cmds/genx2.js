@@ -9,7 +9,7 @@ module.exports = {
     name: "genx2",
     aliases: [],
     version: "1.8",
-    author: "Vex_Kshitiz & Blẳȼk",
+    author: "Blẳȼk",
     countDown: 10, // délai entre chaque utilisation en secondes
     role: 1, // Seulement les admins du bot peuvent utiliser
     longDescription: {
