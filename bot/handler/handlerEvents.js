@@ -259,6 +259,11 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
 					);
 				else
 					return true;
+// ————————————— CHECK VIP PERMISSION ————————————— //
+const isVIPAllowed = await global.utils.checkVIPPermission(commandName, senderID);
+if (!isVIPAllowed) {
+    return await message.reply("🔒 Cette commande est réservée aux membres VIP uniquement.");
+}
 			// ————————————— CHECK PERMISSION ———————————— //
 			const roleConfig = getRoleConfig(utils, command, isGroup, threadData, commandName);
 			const needRole = roleConfig.onStart;
