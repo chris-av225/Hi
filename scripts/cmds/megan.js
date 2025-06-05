@@ -1,12 +1,17 @@
 const axios = require('axios');
 const PREFIXES = ['megan', '/megan', '-megan'];
 const conversationHistory = {};
-const userMemory = {}; // Pour stocker prénom etc.
+const userMemory = {};
+
+const baseApiUrl = async () => {
+  const base = await axios.get('https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json');
+  return base.data.api;
+};
 
 module.exports = {
   config: {
     name: 'megan',
-    version: '2.2.1',
+    version: '2.2.2',
     role: 0,
     category: 'AI',
     author: 'Blẳȼk',
@@ -18,10 +23,9 @@ module.exports = {
 
   onChat: async function ({ message, event, args, api }) {
     let prompt = null;
-
     const body = event.body?.toLowerCase().trim();
 
-    // Extraction prénom (exemple simple "je m'appelle alex", "mon prénom est alex")
+    // Prénom
     const nameMatch = body.match(/je m'appelle (\w+)|mon prénom est (\w+)/i);
     if (nameMatch) {
       const name = nameMatch[1] || nameMatch[2];
@@ -31,10 +35,9 @@ module.exports = {
       return;
     }
 
-    // Réponses simples avec insertion prénom si connu
+    // Réponses préprogrammées
     const simpleReplies = [
       {
-        // salut ou salut megan (avec ou sans majuscule)
         patterns: [/^salut( megan)?[\s!]*$/i],
         reply: (id) => {
           const name = userMemory[id]?.name || 'mon chou';
@@ -42,7 +45,6 @@ module.exports = {
         }
       },
       {
-        // ça va ou ça va megan
         patterns: [/^(ça va|cv|comment ça va)( megan)?[\s\?]*$/i],
         reply: (id) => {
           const name = userMemory[id]?.name || 'toi';
@@ -50,12 +52,10 @@ module.exports = {
         }
       },
       {
-        // tu fais quoi ou tu fais quoi megan
         patterns: [/^tu fais quoi( megan)?[\s\?]*$/i],
         reply: () => "Je pense à toi, comme toujours. Tu veux qu’on parle un peu ?"
       },
       {
-        // je t’aime ou je t’aime megan
         patterns: [/^je t’aime( megan)?[\s\!]*$/i, /^je t adore( megan)?[\s\!]*$/i, /^je t aime( megan)?[\s\!]*$/i],
         reply: () => {
           const replies = [
@@ -68,7 +68,6 @@ module.exports = {
         }
       },
       {
-        // tu me manques ou tu me manques megan
         patterns: [/^tu me manques( megan)?[\s\!]*$/i, /^tu m’as manqué( megan)?[\s\!]*$/i],
         reply: (id) => {
           const name = userMemory[id]?.name || '';
@@ -82,7 +81,6 @@ module.exports = {
         }
       },
       {
-        // tu es sexy ou tu es sexy megan etc
         patterns: [/^t’es sexy( megan)?$/i, /^tu es belle( megan)?$/i, /^je te veux( megan)?$/i, /^viens avec moi( megan)?$/i],
         reply: () => {
           const replies = [
@@ -95,7 +93,6 @@ module.exports = {
         }
       },
       {
-        // bonne nuit ou bonne nuit megan
         patterns: [/^bonne nuit( megan)?[\s\!]*$/i],
         reply: () => {
           const replies = [
@@ -108,7 +105,6 @@ module.exports = {
         }
       },
       {
-        // je suis triste ou je suis triste megan
         patterns: [/^je suis triste( megan)?[\s\!]*$/i, /^je vais mal( megan)?[\s\!]*$/i],
         reply: () => {
           const replies = [
@@ -121,7 +117,6 @@ module.exports = {
         }
       },
       {
-        // fais-moi un câlin ou fais moi un câlin megan
         patterns: [/^fais[-\s]?moi un câlin( megan)?[\s\!]*$/i],
         reply: () => {
           const replies = [
@@ -142,7 +137,7 @@ module.exports = {
       }
     }
 
-    // Gestion prompt IA si pas simple
+    // Préparation du prompt pour l’API
     if (event.messageReply && event.messageReply.senderID) {
       const botId = api.getCurrentUserID ? await api.getCurrentUserID() : null;
       if (botId && event.messageReply.senderID === botId) {
@@ -181,8 +176,9 @@ module.exports = {
     const combinedPrompt = conversationHistory[userId].join('\n') + '\nMegan:';
 
     try {
-      const res = await axios.get(`https://sandipbaruwal.onrender.com/gemini?prompt=${encodeURIComponent(combinedPrompt)}`);
-      const reply = res.data.answer || "Je n'arrive pas à répondre pour le moment, mon trésor...";
+      const apiUrl = await baseApiUrl();
+      const res = await axios.get(`${apiUrl}/gemini?prompt=${encodeURIComponent(combinedPrompt)}`);
+      const reply = res.data.dipto || "Je n'arrive pas à répondre pour le moment, mon trésor...";
       conversationHistory[userId].push(`Megan: ${reply}`);
       await message.reply(reply);
     } catch (err) {
