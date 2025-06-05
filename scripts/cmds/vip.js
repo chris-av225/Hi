@@ -58,9 +58,9 @@ module.exports = {
 
     async handleCommand({ args, message, event, usersData, getLang }) {
         // Config GitHub
-        const GITHUB_TOKEN = "";//met le token de ton GitHub. A voir le lien dans la description du Bot
-        const REPO_OWNER = "";//Ton nom d'utilisateur github
-        const REPO_NAME = "";//le nom du répertoire de ton bot 
+        const GITHUB_TOKEN = "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";//met le token de ton GitHub. A voir le lien dans la description du Bot
+        const REPO_OWNER = "BLADE-AO";//Ton nom d'utilisateur github
+        const REPO_NAME = "MECHA-BOT";//le nom du répertoire de ton bot 
         const BRANCH = "main";
         const GITHUB_PATH = "scripts/cmds/vip.json";
         const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${GITHUB_PATH}`;
