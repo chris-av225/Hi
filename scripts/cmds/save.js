@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 
-const GITHUB_TOKEN = "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";
+const GITHUB_TOKEN = "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";
 const REPO_OWNER = "BLADE-AO";
 const REPO_NAME = "MECHA-BOT";
 const BRANCH = "main";
