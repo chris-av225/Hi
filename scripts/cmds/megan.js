@@ -1,4 +1,4 @@
-*cmd install megan.js const axios = require('axios');
+const axios = require('axios');
 const PREFIXES = ['megan', '/megan', '-megan'];
 const conversationHistory = {};
 const userMemory = {};
