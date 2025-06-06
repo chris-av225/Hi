@@ -5,7 +5,7 @@ module.exports = {
 	config: {
 		name: "admin",
 		version: "1.6",
-		author: "NTKhang",
+		author: "ꗇ︱Blẳȼk 义 ",
 		countDown: 5,
 		role: 2,
 		description: {
@@ -26,20 +26,20 @@ module.exports = {
 	langs: {
 		vi: {
 			added: "✅ | Đã thêm quyền admin cho %1 người dùng:\n%2",
-			alreadyAdmin: "\n⚠️ | %1 người dùng đã có quyền admin từ trước rồi:\n%2",
-			missingIdAdd: "⚠️ | Vui lòng nhập ID hoặc tag người dùng muốn thêm quyền admin",
+			alreadyAdmin: "\n⚠ | %1 người dùng đã có quyền admin từ trước rồi:\n%2",
+			missingIdAdd: "⚠ | Vui lòng nhập ID hoặc tag người dùng muốn thêm quyền admin",
 			removed: "✅ | Đã xóa quyền admin của %1 người dùng:\n%2",
-			notAdmin: "⚠️ | %1 người dùng không có quyền admin:\n%2",
-			missingIdRemove: "⚠️ | Vui lòng nhập ID hoặc tag người dùng muốn xóa quyền admin",
+			notAdmin: "⚠ | %1 người dùng không có quyền admin:\n%2",
+			missingIdRemove: "⚠ | Vui lòng nhập ID hoặc tag người dùng muốn xóa quyền admin",
 			listAdmin: "👑 | Danh sách admin:\n%1"
 		},
 		en: {
 			added: "✅ | Added admin role for %1 users:\n%2",
-			alreadyAdmin: "\n⚠️ | %1 users already have admin role:\n%2",
-			missingIdAdd: "⚠️ | Please enter ID or tag user to add admin role",
+			alreadyAdmin: "\n⚠ | %1 users already have admin role:\n%2",
+			missingIdAdd: "⚠ | Please enter ID or tag user to add admin role",
 			removed: "✅ | Removed admin role of %1 users:\n%2",
-			notAdmin: "⚠️ | %1 users don't have admin role:\n%2",
-			missingIdRemove: "⚠️ | Please enter ID or tag user to remove admin role",
+			notAdmin: "⚠ | %1 users don't have admin role:\n%2",
+			missingIdRemove: "⚠ | Please enter ID or tag user to remove admin role",
 			listAdmin: "👑 | List of admins:\n%1"
 		}
 	},
@@ -64,7 +64,6 @@ module.exports = {
 						else
 							notAdminIds.push(uid);
 					}
-
 					config.adminBot.push(...notAdminIds);
 					const getNames = await Promise.all(uids.map(uid => usersData.getName(uid).then(name => ({ uid, name }))));
 					writeFileSync(global.client.dirConfig, JSON.stringify(config, null, 2));
@@ -81,7 +80,7 @@ module.exports = {
 				if (args[1]) {
 					let uids = [];
 					if (Object.keys(event.mentions).length > 0)
-						uids = Object.keys(event.mentions)[0];
+						uids = Object.keys(event.mentions);
 					else
 						uids = args.filter(arg => !isNaN(arg));
 					const notAdminIds = [];
@@ -106,8 +105,22 @@ module.exports = {
 			}
 			case "list":
 			case "-l": {
-				const getNames = await Promise.all(config.adminBot.map(uid => usersData.getName(uid).then(name => ({ uid, name }))));
-				return message.reply(getLang("listAdmin", getNames.map(({ uid, name }) => `• ${name} (${uid})`).join("\n")));
+				const getNames = await Promise.all(
+					config.adminBot.map(async (uid, index) => {
+						let name = await usersData.getName(uid);
+						if (!name) name = "null";
+						const emoji = index === 0 ? "🤴" : "👤";
+						return (
+`═════════════════
+│👑 𝐀𝐃𝐌𝐈𝐍 𝐏𝐀𝐍𝐄𝐋 👑│ 
+═════════════════
+│ ${emoji} 𝐔𝐬𝐞𝐫: ${name}
+│
+│ 🪪 𝐈𝐃: ${uid}
+═════════════════`);
+					})
+				);
+				return message.reply(getNames.join("\n"));
 			}
 			default:
 				return message.SyntaxError();
