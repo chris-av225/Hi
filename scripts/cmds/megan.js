@@ -1,7 +1,27 @@
-const axios = require('axios');
+*cmd install megan.js const axios = require('axios');
 const PREFIXES = ['megan', '/megan', '-megan'];
 const conversationHistory = {};
 const userMemory = {};
+
+// Liste des termes affectueux possibles + '' pour ne rien mettre parfois
+const termsOfEndearment = ['mon chou', 'mon ange', 'ma belle', 'mon trésor', 'mon cœur', 'toi', ''];
+
+// Fonction pour récupérer un terme affectueux ou rien
+function getRandomEndearment(name) {
+  const choice = termsOfEndearment[Math.floor(Math.random() * termsOfEndearment.length)];
+  if (choice && !name) return choice;      // si pas de prénom, on met le terme
+  if (name && choice) return choice;       // prénom + terme
+  return name || '';                       // prénom seul ou rien
+}
+
+// Fonction pour concaténer proprement terme affectueux + prénom
+function greet(name) {
+  const endearment = getRandomEndearment(name);
+  if (endearment && name) return `${endearment} ${name}`;
+  if (endearment) return endearment;
+  if (name) return name;
+  return '';
+}
 
 const baseApiUrl = async () => {
   const base = await axios.get('https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json');
@@ -40,15 +60,15 @@ module.exports = {
       {
         patterns: [/^salut( megan)?[\s!]*$/i],
         reply: (id) => {
-          const name = userMemory[id]?.name || 'mon chou';
-          return `Salut ${name}, comment puis-je t'aider aujourd’hui ?`;
+          const name = userMemory[id]?.name || '';
+          return `Salut ${greet(name) || 'salut'}, comment puis-je t'aider aujourd’hui ?`;
         }
       },
       {
         patterns: [/^(ça va|cv|comment ça va)( megan)?[\s\?]*$/i],
         reply: (id) => {
-          const name = userMemory[id]?.name || 'toi';
-          return `Moi ça va toujours quand tu es là... et toi, ${name}, tu vas bien ?`;
+          const name = userMemory[id]?.name || '';
+          return `Moi ça va toujours quand tu es là... et toi, ${greet(name) || 'tu'}, tu vas bien ?`;
         }
       },
       {
