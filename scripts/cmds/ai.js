@@ -2,7 +2,7 @@ const axios = require('axios');
 const moment = require('moment-timezone');
 require('moment/locale/fr'); // Import locale française
 
-const UPoLPrefix = ['edu', 'ai', 'megan', 'bot', 'ask'];
+const UPoLPrefix = ['edu', 'ai', 'il', 'bot', 'ask'];
 
 const timezoneMap = {
   france: 'Europe/Paris',
