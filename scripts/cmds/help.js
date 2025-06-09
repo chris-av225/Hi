@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "🩷𝗠𝗘𝗚𝗔𝗡🪭𝗔𝗜-𝗕𝗢𝗧🪷\n";
+const doNotDelete = "voldigo\n";
 
 function formatFont(text) {
   const fontMapping = {
@@ -67,17 +67,17 @@ module.exports = {
         const names = categories[category].commands.sort();
         for (let i = 0; i < names.length; i++) {
           const formattedCmd = formatFonts(names[i]);
-          msg += `│🪭| ${formattedCmd}\n`;
+          msg += `│♦️| ${formattedCmd}\n`;
         }
 
         msg += `╰──────────────❍\n`;
       });
 
       const totalCommands = commands.size;
-      msg += `╭───❍【 🪭 | 𝐄𝐍𝐉𝐎𝐘 】\n`;
+      msg += `╭───❍【 ♦️ | 𝐄𝐍𝐉𝐎𝐘 】\n`;
       msg += `│» 𝙲𝚞𝚛𝚛𝚎𝚗𝚝𝚕𝚢 𝚝𝚑𝚒𝚜 𝚋𝚘𝚝 𝚑𝚊𝚜 \n│『 ${totalCommands} 』𝚌𝚘𝚖𝚖𝚊𝚗𝚍𝚜 𝚝𝚑𝚊𝚝 𝚌-\n│-𝚊𝚗 𝚋𝚎 𝚞𝚜𝚎𝚍\n`;
       msg += `│» 𝚃𝚢𝚙𝚎 ( ${prefix}help 𝘤𝘮𝘥_𝘯𝘢𝘮𝘦 )\n│𝚃𝚘 𝚟𝚒𝚎𝚠 𝚍𝚎𝚝𝚊𝚒𝚕𝚜\n│𝚘𝚏 𝚑𝚘𝚠 𝚝𝚘 𝚞𝚜𝚎\n`;
-      msg += `│» 𝚃𝚢𝚙𝚎 ( ${prefix}𝚜𝚞𝚙𝚙𝚘𝚛𝚝𝚐𝚌 𝚝𝚘\n│𝚝𝚘 𝚐𝚎𝚝 𝚊𝚍𝚍𝚎𝚍 𝚝𝚘 𝚖𝚢\n│𝚍𝚎𝚟𝚜 𝙶𝚛𝚘𝚞𝚙 𝚌𝚑𝚊𝚝 )\n`;
+      msg += `│» 𝚃𝚢𝚙𝚎 ( ${prefix}link admin\n│𝚝𝚘 𝚐𝚎𝚝 𝚊𝚍𝚍𝚎𝚍 𝚝𝚘 𝚖𝚢\n│https://www.facebook.com/voldigo.anos )\n`;
       msg += `╰─────────────❍\n`;
       msg += `╭────────────❍\n`;
       msg += `│ ${doNotDelete}`;
