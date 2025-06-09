@@ -22,7 +22,7 @@ a voir sur facebook </h1>
 
 ## À propos
 
-RavenBot est un bot Messenger interactif puissant et polyvalent. Il intègre une intelligence conversationnelle avancée, des commandes utiles, des générateurs d'images, des systèmes d’événements automatisés et une personnalisation poussée. Conçu pour enrichir vos conversations, animer vos groupes et répondre à vos requêtes en temps réel, RavenBot est bien plus qu’un simple assistant : c’est votre compagnon numérique personnalisé.
+VOLDIGO-Bot est un bot Messenger interactif puissant et polyvalent. Il intègre une intelligence conversationnelle avancée, des commandes utiles, des générateurs d'images, des systèmes d’événements automatisés et une personnalisation poussée. Conçu pour enrichir vos conversations, animer vos groupes et répondre à vos requêtes en temps réel, RavenBot est bien plus qu’un simple assistant : c’est votre compagnon numérique personnalisé.
 
 ---
 
