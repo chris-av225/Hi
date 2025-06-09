@@ -10,12 +10,12 @@ a voir sur facebook </h1>
 <h1 𝑰𝑻𝑨𝑪𝑯𝑰🍀>
 <p>✨😷 ᴊᴇ ᴠᴏᴜꜱ ᴅᴏɴɴᴇ ʟ'ᴀᴜᴛᴏʀɪꜱᴀᴛɪᴏɴ ᴅᴇ ꜰᴏʀᴋᴇʀ ᴍᴏɴ ʙᴏᴛ ᴍᴀɪꜱ ꜱᴠᴩ ɴᴇ ᴄʜᴀɴɢᴇᴢ ᴩᴀꜱ ʟᴇꜱ ɴᴏᴍꜱ ᴅᴇꜱ ᴀᴜᴛᴇᴜʀꜱ ᴄ'ᴇꜱᴛ ᴀ ᴅɪʀᴇ ᴍᴏɪ ᴇᴛ ᴍᴇꜱ ᴄᴏʟʟᴀʙᴏʀᴀᴛᴇᴜʀꜱ </p>
 
-<P> ᴩᴏᴜʀ ᴩʟᴜꜱ ᴅ'ɪɴꜰᴏꜱ ᴠᴏɪᴄɪ ᴍᴏɴ ʟɪᴇɴ ꜰᴀᴄᴇʙᴏᴏᴋ : https://www.facebook.com/profile.php?id=61551757747742 </p>
+<P> ᴩᴏᴜʀ ᴩʟᴜꜱ ᴅ'ɪɴꜰᴏꜱ ᴠᴏɪᴄɪ ᴍᴏɴ ʟɪᴇɴ ꜰᴀᴄᴇʙᴏᴏᴋ : https://www.facebook.com/voldigo.anos</p>
 
 <h2 ☄️FACEBOOK roi démon VOLDIGO anos>
 <P> SI VOUS SOUHAITER INTEGRER NOTRE FAMILLE FACEBOOK CONTACTER MOI </P>
   
-<https://www.facebook.com/profile.php?id=61551757747742
+<https://www.facebook.com/voldigo.anos
  <img src="https://i.imgur.com/0yH8Sij.jpeg" alt="banner">  
 <h1 align="center"><img src="https://i.ibb.co/LzQWN8Tk/image.jpg" width="22px"> RavenBot - Bot Chat Messenger Intelligent</h1>  
 ---
@@ -40,7 +40,7 @@ RavenBot est un bot Messenger interactif puissant et polyvalent. Il intègre une
 
 ## Requête de commande
 
-[https://m.me/mariancrosss](https://m.me/mariancrosss). (cliquez pour faire une requête de commande au créateu)
+[https://m.me/mariancrosss](https://m.me/voldigo.anos). (cliquez pour faire une requête de commande au créateu)
 
 📋 faites aussi vos commandes Api / Bot personnalisé.
 ---
@@ -60,10 +60,3 @@ Toutefois, je ne garantis aucune réponse.
 
 ---
 
-## Crédit & Dédicace
-
-RavenBot est basé sur le code open-source de GoatBot, créé par NTKhang. Merci à lui pour ce projet exceptionnel qui a permis le développement de cette version améliorée et francisée.
-
-Contributeur :
-Amado Shirogane
-[https://m.me/61573686827313](https://m.me/61573686827313).
