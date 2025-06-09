@@ -79,7 +79,7 @@ module.exports = {
     if (!ahprefix) return;
 
     const question = event.body.substring(ahprefix.length).trim().toLowerCase();
-    if (!question) return message.reply('🤓 𝗩𝗼𝗹𝗱𝗶𝗴𝗼\n━━━━━━━━━━━━━\n𝗼𝘂𝗮𝗶𝗽 𝘁𝗮 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻 𝘃𝗶𝘁𝗲🤓🎩.');
+    if (!question) return message.reply('🤓 𝗩𝗼𝗹𝗱𝗶𝗴𝗼\n●▬▬▬▬๑۩۩๑▬▬▬▬▬●\n𝗼𝘂𝗮𝗶𝗽 𝘁𝗮 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻 𝘃𝗶𝘁𝗲🤓🎩.');
 
     const isTimeQuestion = /(quel(le)? heure|date|année|mois|jour)/.test(question);
 
@@ -108,7 +108,7 @@ module.exports = {
       // Choisir la bonne préposition : "au" ou "en"
       const preposition = paysMasculins.includes(country) ? 'au' : 'en';
 
-      const reply = `🤓 𝗩𝗼𝗹𝗱𝗶𝗴𝗼\n━━━━━━━━━━━━━\n📅 Nous sommes le ${dateStr}.\n🕒 Il est ${timeStr} ${preposition} ${countryNameFormatted}.`;
+      const reply = `🤓 𝗩𝗼𝗹𝗱𝗶𝗴𝗼\n●▬▬▬▬๑۩۩๑▬▬▬▬▬●\n📅 Nous sommes le ${dateStr}.\n🕒 Il est ${timeStr} ${preposition} ${countryNameFormatted}.`;
       return message.reply(reply);
     }
 
@@ -118,7 +118,7 @@ module.exports = {
     try {
       const response = await axios.get(`https://sandipbaruwal.onrender.com/gemini?prompt=${encodedPrompt}`);
       const answer = response.data.answer |"𝗱𝗲́𝘀𝗼𝗹𝗲́ 𝗷'𝗮𝗶 𝗽𝗮𝘀 𝗽𝘂 𝘁𝗿𝗼𝘂𝘃𝗲́ 𝗹𝗮 𝗿𝗲́𝗽𝗼𝗻𝘀𝗲.';
-      return message.reply(`🤓 𝘃𝗼𝗹𝗱𝗶𝗴𝗼\n━━━━━━━━━━━━━\n${answer}`);
+      return message.reply(`🤓 𝘃𝗼𝗹𝗱𝗶𝗴𝗼\n●▬▬▬▬๑۩۩๑▬▬▬▬▬●\n${answer}`);
     } catch (error) {
       return message.reply('Une erreur est survenue lors de la requête IA.');
     }
